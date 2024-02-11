@@ -3,7 +3,7 @@ import os
 import re
 
 from glob import glob
-from datetime import datetime
+from datetime import datetime, timedelta
 from .utils import date_from_groupdict, Actions, parse_timedelta
 
 
@@ -43,20 +43,46 @@ def main():
         description="Classifies files based on date",
     )
 
-    parser.add_argument("fileregex", type=re.compile)
-    parser.add_argument("-k", "--keep", type=parse_timedelta, action="append")
+    parser.add_argument(
+        "fileregex", type=re.compile, help="Match files with this python regex"
+    )
+    parser.add_argument(
+        "-k",
+        "--keep",
+        type=parse_timedelta,
+        action="append",
+        help="Time difference for which to store the newest version older than specified",
+    )
+    parser.add_argument(
+        "-n",
+        "--newest",
+        action="append_const",
+        const=timedelta(days=0),
+        help="Store newest version",
+    )
     parser.add_argument(
         "-a",
         "--action",
         choices=Actions,
         type=Actions.__getitem__,
         default=Actions.output,
+        help="What to do with the unnecessary files",
     )
     parser.add_argument(
-        "-d", "--delete", action="store_const", dest="action", const=Actions.delete
+        "-d",
+        "--delete",
+        action="store_const",
+        dest="action",
+        const=Actions.delete,
+        help="Delete all unnecessary files",
     )
     parser.add_argument(
-        "-o", "--output", action="store_const", dest="action", const=Actions.output
+        "-o",
+        "--output",
+        action="store_const",
+        dest="action",
+        const=Actions.output,
+        help="Output all unnecessary files",
     )
     args = parser.parse_args()
 
