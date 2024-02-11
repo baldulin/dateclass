@@ -39,9 +39,8 @@ def run(fname, keep_deltas, action):
 
 def main():
     parser = argparse.ArgumentParser(
-        prog="ProgramName",
-        description="What the program does",
-        epilog="Text at the bottom of help",
+        prog="dateclass",
+        description="Classifies files based on date",
     )
 
     parser.add_argument("fileregex", type=re.compile)
