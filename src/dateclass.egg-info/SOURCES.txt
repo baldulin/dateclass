@@ -1,0 +1,13 @@
+MANIFEST.in
+README.md
+pyproject.toml
+setup.cfg
+src/dateclass/__init__.py
+src/dateclass/__main__.py
+src/dateclass/commands.py
+src/dateclass/utils.py
+src/dateclass.egg-info/PKG-INFO
+src/dateclass.egg-info/SOURCES.txt
+src/dateclass.egg-info/dependency_links.txt
+src/dateclass.egg-info/entry_points.txt
+src/dateclass.egg-info/top_level.txt

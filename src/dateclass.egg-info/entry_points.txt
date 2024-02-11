@@ -1,0 +1,2 @@
+[console_scripts]
+fetcher = fetcher.commands:main
